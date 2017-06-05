@@ -2,7 +2,7 @@
 
 namespace CreateClass
 {
-    class Employee : Person
+    class Employee : Person, ICloneable
     {
         public int Salary { get; set; }
         public string Profession { get; set; }
@@ -22,7 +22,21 @@ namespace CreateClass
 
         public override string ToString()
         {
-            return base.ToString() + String.Format(", salary: {0}, profession: {1}, room: {2}", Salary, Profession, Room);
+            return base.ToString() + String.Format(", salary: {0}, profession: {1}, room: {2}", Salary, Profession, Room.Number);
+        }
+
+        //public object Clone()
+        //{
+        //    //creates shallow copy of 'this'
+        //    return MemberwiseClone();
+        //}
+
+        public object Clone()
+        {
+            //creates deep copy of 'this'
+            Employee copy = (Employee)MemberwiseClone();
+            copy.Room = new Room(Room.Number);
+            return copy;
         }
 
     }
@@ -31,7 +45,7 @@ namespace CreateClass
     {
         public int Number { get; set; }
 
-        Room(int num)
+        public Room(int num)
         {
             Number = num;
         }
