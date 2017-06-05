@@ -21,15 +21,6 @@ namespace CreateClass
             return String.Format("name: {0}, birth date: {1}", this.Name, this.BirthDate);
         }
 
-        static void Main(string[] args)
-        {
-            Person person = new Person();
-            person.Name = "bella";
-            DateTime date = new DateTime(1990, 12, 6);
-            person.BirthDate = date;
-            Console.WriteLine(person);
-            Console.ReadKey();
-        }
     }
 
     public enum Genders : int
